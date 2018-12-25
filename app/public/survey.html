@@ -22,14 +22,28 @@
         <hr>
         <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>About You</strong></h4>
         <br>
+
+
+        <form>
+            <div class="form-group">
+                <label for="inputName">Name (Required)</label>
+                <input type="name" class="form-control" id="inputName">
+            </div>
+            <div class="form-group">
+                <label for="inputPhoto">Link to Photo Image (Required)</label>
+                <input type="link" class="form-control" id="inputPhoto">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 700px;">Submit</button>
+        </form>
+
+        <br>
+        <footer class="footer">
+            <div class="container">
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Katherine890/FriendFinder" target="_blank">Github Repo</a>
+            </div>
+        </footer>
+
     </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p><a href="/api/friends">API Friends List</a>
-        </div>
-    </footer>
-
 
 
 </body>

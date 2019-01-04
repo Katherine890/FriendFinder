@@ -187,7 +187,7 @@
         userData.photo = $("#inputPhoto").val();
 
         // make variables for each answer
-          var answer1 =$("#answer1").val();
+        var answer1 =$("#answer1").val();
         var answer2 =$("#answer2").val();
         var answer3 =$("#answer3").val();
         var answer4 =$("#answer4").val();
@@ -200,7 +200,7 @@
 
            // put answers into an array
         userData.scores = [answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10];
-        console.log(userData);
+        console.log("User Data", userData);
 
         $.post("/api/friends", userData)
         .then(function(data){

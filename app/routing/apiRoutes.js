@@ -28,21 +28,21 @@ module.exports = function (app) {
             friendScore: 1000
         }
         for (i = 0; i < friendsData.length; i++) {
-            var currentFriend = friendsData[i];
+            var currentFriend = friendsData[i]; // create variable for each friend in the array
             console.log("Current Friend", currentFriend);
-            var difference = 0;
-            for (j = 0; i < currentFriend.scores.length; j++) {
-                var currentFriendScore = currentFriend.scores[j];
-                var currentUserScore = newUser.scores[j];
-                difference += Math.abs(currentFriendScore - currentUserScore);
-               // console.log(difference);
-                //console.log(friendscore);
-                //console.log(currentUserScore);
+            var totalDifference = 0;
+            for (j = 0; j < currentFriend.scores.length; j++) {
+                var currentFriendScore = currentFriend.scores[j]; // create a variable for each score for the CURRENT friend in the array
+                var currentUserScore = newUser.scores[j]; // create varaible for each score for the CURRENT User in the array 
+                totalDifference += Math.abs(currentFriendScore - currentUserScore);
+                //console.log("total difference", totalDifference);
+                //console.log("Friend Score", currentFriendScore);
+               // console.log("Current User", currentUserScore);  // USER DATA on survey = bestFriend data?
             }
-            if (difference <= bestFriend.friendScore) {
+            if (totalDifference <= bestFriend.friendScore) {
                 bestFriend.name = currentFriend.name
                 bestFriend.photo = currentFriend.photo
-                bestFriend.friendScore = difference
+                bestFriend.friendScore = totalDifference
             }
         }
         // var currentUser = answersArray;

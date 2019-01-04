@@ -216,6 +216,7 @@
     <script>
         $("#submit").on("click", function (event) {
             event.preventDefault()
+          
 
             var userData = {}
             userData.name = $("#inputName").val();
@@ -246,9 +247,10 @@
                     parseInt(answer8),
                     parseInt(answer9),
                     parseInt(answer10)
-                    
+
                 ];
             console.log("User Data", userData);
+            console.log("Best Friend FRONT", bestFriend);
 
             $.post("/api/friends", userData)
                 .then(function (data) {
@@ -256,6 +258,8 @@
                 }).catch(function (error) {
                     console.log(error);
                 })
+
+                $("#exampleModalCenter").modal("show");
         })
 
     </script>

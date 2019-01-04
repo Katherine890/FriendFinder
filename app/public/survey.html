@@ -47,7 +47,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 2-->
+            <!--QUESTION 2-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 2</strong></h4>
             <p style="font-size:20px">You rely more on your life experiences than your own imagination.</p>
             <select id="answer2" class="custom-select" style="width:200px">
@@ -60,7 +60,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 3-->
+            <!--QUESTION 3-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 3</strong></h4>
             <p style="font-size:20px">It's normal for you to panic during stressful situations.</p>
             <select id="answer3" class="custom-select" style="width:200px">
@@ -73,7 +73,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 4-->
+            <!--QUESTION 4-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 4</strong></h4>
             <p style="font-size:20px">You love to travel and explore new places.</p>
             <select id="answer4" class="custom-select" style="width:200px">
@@ -86,7 +86,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 5-->
+            <!--QUESTION 5-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 5</strong></h4>
             <p style="font-size:20px">You spend most weekends out with friends.</p>
             <select id="answer5" class="custom-select" style="width:200px">
@@ -99,7 +99,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 6-->
+            <!--QUESTION 6-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 6</strong></h4>
             <p style="font-size:20px">You find it easy to lose control when you're angry.</p>
             <select id="answer6" class="custom-select" style="width:200px">
@@ -112,7 +112,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 7-->
+            <!--QUESTION 7-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 7</strong></h4>
             <p style="font-size:20px">You tend to find comfort in sticking by the rules.</p>
             <select id="answer7" class="custom-select" style="width:200px">
@@ -125,7 +125,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 8-->
+            <!--QUESTION 8-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 8</strong></h4>
             <p style="font-size:20px">You would rather take shots than sip on wine.</p>
             <select id="answer8" class="custom-select" style="width:200px">
@@ -138,7 +138,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 9-->
+            <!--QUESTION 9-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 9</strong></h4>
             <p style="font-size:20px">You enjoy staying active and healthy.</p>
             <select id="answer9" class="custom-select" style="width:200px">
@@ -151,7 +151,7 @@
             </select>
             <br><br>
 
-             <!--QUESTION 10-->
+            <!--QUESTION 10-->
             <h4 style="font-size:25px; font-family:Helvetica Neue,Helvetica,Arial,sans-serif;"><strong>Question 10</strong></h4>
             <p style="font-size:20px">You find it easy to get comfortable with anyone you've just met.</p>
             <select id="answer10" class="custom-select" style="width:200px">
@@ -167,48 +167,97 @@
 
 
 
-            <button id="submit" type="submit" class="btn btn-primary" style="width: 1000px;">Submit</button>
+            <!--<button id="submit" type="submit" class="btn btn-primary" style="width: 1000px;">Submit</button>-->
+
+
+
+
+
+            <!-- Button trigger modal -->
+            <button id="submit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Submit
+              </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Best Match</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
         </form>
 
         <br>
         <footer class="footer">
             <div class="container">
-                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Katherine890/FriendFinder" target="_blank">Github Repo</a>
+                <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/Katherine890/FriendFinder"
+                        target="_blank">Github Repo</a>
             </div>
         </footer>
 
     </div>
     <script>
-        $("#submit").on("click", function(event) {
+        $("#submit").on("click", function (event) {
             event.preventDefault()
 
             var userData = {}
-          userData.name = $("#inputName").val();
-        userData.photo = $("#inputPhoto").val();
+            userData.name = $("#inputName").val();
+            userData.photo = $("#inputPhoto").val();
 
-        // make variables for each answer
-        var answer1 =$("#answer1").val();
-        var answer2 =$("#answer2").val();
-        var answer3 =$("#answer3").val();
-        var answer4 =$("#answer4").val();
-        var answer5 =$("#answer5").val();
-        var answer6 =$("#answer6").val();
-        var answer7 =$("#answer7").val();
-        var answer8 =$("#answer8").val();
-        var answer9 =$("#answer9").val();
-        var answer10 =$("#answer10").val();
+            // make variables for each answer
+            var answer1 = $("#answer1").val();
+            var answer2 = $("#answer2").val();
+            var answer3 = $("#answer3").val();
+            var answer4 = $("#answer4").val();
+            var answer5 = $("#answer5").val();
+            var answer6 = $("#answer6").val();
+            var answer7 = $("#answer7").val();
+            var answer8 = $("#answer8").val();
+            var answer9 = $("#answer9").val();
+            var answer10 = $("#answer10").val();
 
-           // put answers into an array
-        userData.scores = [answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10];
-        console.log("User Data", userData);
+            // put answers into an array
+            userData.scores =
+                [
+                    parseInt(answer1),
+                    parseInt(answer2),
+                    parseInt(answer3),
+                    parseInt(answer4),
+                    parseInt(answer5),
+                    parseInt(answer6),
+                    parseInt(answer7),
+                    parseInt(answer8),
+                    parseInt(answer9),
+                    parseInt(answer10)
+                    
+                ];
+            console.log("User Data", userData);
 
-        $.post("/api/friends", userData)
-        .then(function(data){
-            console.log(data);
-        }).catch(function(error){
-            console.log(error);
+            $.post("/api/friends", userData)
+                .then(function (data) {
+                    console.log(data);
+                }).catch(function (error) {
+                    console.log(error);
+                })
         })
-        })
+
     </script>
 
 

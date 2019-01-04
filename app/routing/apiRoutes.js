@@ -19,7 +19,7 @@ module.exports = function (app) {
     // 2. take the differences of each compared strings and add together
     // 3. The user with the least amount of totalDifference is the match
     app.post("/api/friends", function (req, res) {
-        console.log(req.body);
+        console.log( "BODY", req.body);
         var newUser = req.body;
         var bestFriend =
         {
@@ -34,10 +34,11 @@ module.exports = function (app) {
             for (j = 0; j < currentFriend.scores.length; j++) {
                 var currentFriendScore = currentFriend.scores[j]; // create a variable for each score for the CURRENT friend in the array
                 var currentUserScore = newUser.scores[j]; // create varaible for each score for the CURRENT User in the array 
+               // var currentUserScoreParsed = parseInt(currentUserScore);
                 totalDifference += Math.abs(currentFriendScore - currentUserScore);
                 //console.log("total difference", totalDifference);
                 //console.log("Friend Score", currentFriendScore);
-               // console.log("Current User", currentUserScore);  // USER DATA on survey = bestFriend data?
+               // console.log("Current User", currentUserScore);  
             }
             if (totalDifference <= bestFriend.friendScore) {
                 bestFriend.name = currentFriend.name

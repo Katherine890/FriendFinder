@@ -3,52 +3,55 @@ var friendsData = require("../data/friends");
 
 module.exports = function (app) {
 
+    // This turns the users' results from strings to integers
+    var stringScorestoIntScores = function(scores) {
+        var result = [];
 
-    //handles whenever a user visits a page
+        for(let i=0; i < scores.length; i++) {
+            result.push(parseInt(scores[i], 10));
+        }
+
+        return result;
+    } 
 
     //displays json of all possible friends
     app.get("/api/friends", function (req, res) {
         res.json(friendsData);
-
     });
 
-    // handles when user submits survey and results (data) is pushed to javascript array
-    // saves data to the friendsData array
-    // handles friend compatibility
-   
-    // 2. take the differences of each compared strings and add together
-    // 3. The user with the least amount of totalDifference is the match
     app.post("/api/friends", function (req, res) {
-        console.log( "BODY", req.body);
-        var newUser = req.body;
         var bestFriend =
         {
             name: "",
             photo: "",
             friendScore: 1000
-        }
-        for (i = 0; i < friendsData.length; i++) {
+        };
+        // This is the variable for the newly parsed scores
+        var newUserScore = stringScorestoIntScores(req.body.scores);
+    
+        for (var i = 0; i < friendsData.length; i++) {
             var currentFriend = friendsData[i]; // create variable for each friend in the array
-            console.log("Current Friend", currentFriend);
             var totalDifference = 0;
-            for (j = 0; j < currentFriend.scores.length; j++) {
+
+            for (var j = 0; j < currentFriend.scores.length; j++) {
                 var currentFriendScore = currentFriend.scores[j]; // create a variable for each score for the CURRENT friend in the array
-                var currentUserScore = newUser.scores[j]; // create varaible for each score for the CURRENT User in the array 
-               // var currentUserScoreParsed = parseInt(currentUserScore);
+                var currentUserScore = newUserScore[j]; // create varaible for each score for the CURRENT User in the array 
                 totalDifference += Math.abs(currentFriendScore - currentUserScore);
-                //console.log("total difference", totalDifference);
-                //console.log("Friend Score", currentFriendScore);
-               // console.log("Current User", currentUserScore);  
+              
             }
+
             if (totalDifference <= bestFriend.friendScore) {
                 bestFriend.name = currentFriend.name
                 bestFriend.photo = currentFriend.photo
                 bestFriend.friendScore = totalDifference
             }
         }
-        // var currentUser = answersArray;
-        console.log("new best friend", bestFriend);
+
+        console.log("BEST MATCH", bestFriend);
+       
+        req.body.scores = newUserScore;
+        
         friendsData.push(req.body);
         res.json(bestFriend);
-    })
+    });
 };

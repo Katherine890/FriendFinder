@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!--jQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--BootStrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+
 
     <div class="container">
         <br>
@@ -164,45 +166,37 @@
             </select>
             <br><br>
 
-
-
-
             <!--<button id="submit" type="submit" class="btn btn-primary" style="width: 1000px;">Submit</button>-->
 
 
+        </form>
 
 
-
-            <!-- Button trigger modal -->
-            <button id="submit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                Submit
-              </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalCenterTitle">Best Match</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+        <!-- Button trigger modal -->
+        <button id="submit" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Submit
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Best Match</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
-
-
-
-
-        </form>
+        </div>
 
         <br>
         <footer class="footer">
@@ -212,11 +206,12 @@
             </div>
         </footer>
 
+
     </div>
     <script>
         $("#submit").on("click", function (event) {
             event.preventDefault()
-          
+
 
             var userData = {}
             userData.name = $("#inputName").val();
@@ -250,7 +245,6 @@
 
                 ];
             console.log("User Data", userData);
-            console.log("Best Friend FRONT", bestFriend);
 
             $.post("/api/friends", userData)
                 .then(function (data) {
@@ -259,11 +253,14 @@
                     console.log(error);
                 })
 
-                $("#exampleModalCenter").modal("show");
         })
 
-    </script>
+        $("#myForm").on("submit", function(e) {
+            $("#myModal").modal("show");
+            e.preventDefault();
+        });
 
+    </script>
 
 </body>
 
